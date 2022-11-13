@@ -12,3 +12,7 @@ Curerntly under development. Started on 13/11/2022.
 + Calculate such prediction with selected subscriptions.
 
 This is free for anyone else to clone and/or use, but please give credit where credit is due (especially if you are re-using large amounts of code).
+
+## Development Environment Information
+IDE:
+IntelliJ IDEA Community Edition
