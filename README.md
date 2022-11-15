@@ -8,6 +8,7 @@ Curerntly under development. Started on 13/11/2022.
 - See balance
 - See history
 - See predictions
++ Enter transaction info easily
 + Calculate prediction at a certain date.
 + Calculate such prediction with selected subscriptions.
 
