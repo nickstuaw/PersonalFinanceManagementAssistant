@@ -49,6 +49,33 @@ public class Subscription {
         return charge * Math.floor(daysFromStartToNow() / 7.0);
     }
 
+    /**
+     * @param units Units of the frequency type (years, months, days)
+     * @return The projected charge in [units] [y/m/d] time
+     */
+    public double getProjectionInFrequencyUnits(int units) {
+        LocalDate valueToAdd;
+        Period period;
+        PFreqType pFType = frequency.getPFreqType();
+        if(pFType == PFreqType.DAYS) {
+            valueToAdd = LocalDate.now().plusDays(units);
+            period = Period.between(longToDate(start), valueToAdd);
+            return charge * period.getDays();
+        } else if (pFType == PFreqType.WEEKS) {
+            valueToAdd = LocalDate.now().plusWeeks(units);
+            period = Period.between(longToDate(start), valueToAdd);
+            return charge * Math.floor(period.getDays() / 7.0);
+        } else if (pFType == PFreqType.MONTHS) {
+            valueToAdd = LocalDate.now().plusMonths(units);
+            period = Period.between(longToDate(start), valueToAdd);
+            return charge * period.getMonths();
+        } else {// as if pFType == PFreqType.YEARS
+            valueToAdd = LocalDate.now().plusYears(units);
+            period = Period.between(longToDate(start), valueToAdd);
+            return charge * period.getYears();
+        }
+    }
+
     public void setCharge(long charge) {
         this.charge = charge;
     }
